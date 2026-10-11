@@ -875,6 +875,13 @@ void reg_wizchip_cs_cbfunc(void(*cs_sel)(void), void(*cs_desel)(void));
 void reg_wizchip_bus_cbfunc(iodata_t (*bus_rb)(uint32_t addr), void (*bus_wb)(uint32_t addr, iodata_t wb));
 
 /**
+    @brief Registers call back function for bus buffer interface.
+    @note If not registered, the default per-data functions (@ref wizchip_bus_read_buf & @ref wizchip_bus_write_buf) is called.
+*/
+void reg_wizchip_busbuf_cbfunc(void (*busbuf_rb)(uint32_t AddrSel, iodata_t* pBuf, int16_t len, uint8_t addrinc),
+                               void (*busbuf_wb)(uint32_t AddrSel, iodata_t* pBuf, int16_t len, uint8_t addrinc));
+
+/**
     @brief Registers call back function for SPI interface.
     @param spi_rb : callback function to read byte using SPI
     @param spi_wb : callback function to write byte using SPI
